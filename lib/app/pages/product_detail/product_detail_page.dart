@@ -50,7 +50,7 @@ class _ProductDetailPageState
                 },
                 child: Text(
                   'Cancelar',
-                  style: context.textStyle.textBold.copyWith(
+                  style: context.textStyles.textBold.copyWith(
                     color: Colors.red,
                   ),
                 ),
@@ -63,7 +63,7 @@ class _ProductDetailPageState
                 },
                 child: Text(
                   'Cofnirmar',
-                  style: context.textStyle.textBold,
+                  style: context.textStyles.textBold,
                 ),
               ),
             ],
@@ -95,7 +95,7 @@ class _ProductDetailPageState
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               widget.product.name,
-              style: context.textStyle.textExtraBold.copyWith(
+              style: context.textStyles.textExtraBold.copyWith(
                 fontSize: 22,
               ),
             ),
@@ -109,7 +109,7 @@ class _ProductDetailPageState
               child: SingleChildScrollView(
                 child: Text(
                   widget.product.description,
-                  style: context.textStyle.textExtraBold.copyWith(
+                  style: context.textStyles.textExtraBold.copyWith(
                     fontSize: 22,
                   ),
                 ),
@@ -167,7 +167,7 @@ class _ProductDetailPageState
                             Expanded(
                               child: Text(
                                 'Adicionar',
-                                style: context.textStyle.textExtraBold
+                                style: context.textStyles.textExtraBold
                                     .copyWith(fontSize: 13),
                               ),
                             ),
@@ -181,7 +181,7 @@ class _ProductDetailPageState
                                 minFontSize: 4,
                                 maxLines: 1,
                                 textAlign: TextAlign.center,
-                                style: context.textStyle.textExtraBold
+                                style: context.textStyles.textExtraBold
                                     .copyWith(fontSize: 13),
                               ),
                             )

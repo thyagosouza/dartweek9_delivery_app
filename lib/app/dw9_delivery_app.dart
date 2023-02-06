@@ -18,8 +18,8 @@ class Dw9DeliveryApp extends StatelessWidget {
         title: 'Vaquinha Burguer',
         theme: ThemeConfig.theme,
         routes: {
-          '/': (context) => const SplashPage(),
-          //'/': (context) => ProductDetailRouter.page,
+          //'/': (context) => const SplashPage(),
+          '/': (context) => LoginPage(),
           '/home': (context) => HomeRouter.page,
           '/productDetail': (context) => ProductDetailRouter.page,
           '/auth/login': (context) => const LoginPage(),

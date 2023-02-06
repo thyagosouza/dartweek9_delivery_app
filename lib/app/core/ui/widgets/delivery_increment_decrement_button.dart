@@ -32,7 +32,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
               onTap: decrementOnTap,
               child: Text(
                 '-',
-                style: context.textStyle.textMedium.copyWith(
+                style: context.textStyles.textMedium.copyWith(
                   fontSize: 22,
                   color: Colors.grey,
                 ),
@@ -40,7 +40,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
             ),
             Text(
               amout.toString(),
-              style: context.textStyle.textRegular
+              style: context.textStyles.textRegular
                   .copyWith(fontSize: 17, color: context.colors.secondary),
             ),
             InkWell(
@@ -49,7 +49,7 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   '+',
-                  style: context.textStyle.textMedium.copyWith(
+                  style: context.textStyles.textMedium.copyWith(
                     fontSize: 22,
                     color: Colors.grey,
                   ),

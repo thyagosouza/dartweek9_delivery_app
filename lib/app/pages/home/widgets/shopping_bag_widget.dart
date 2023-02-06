@@ -68,7 +68,7 @@ class ShoppingBagWidget extends StatelessWidget {
                   child: Text(
                     'Ver Sacola',
                     style:
-                        context.textStyle.textExtraBold.copyWith(fontSize: 14),
+                        context.textStyles.textExtraBold.copyWith(fontSize: 14),
                   ),
                 ),
                 Align(
@@ -76,7 +76,7 @@ class ShoppingBagWidget extends StatelessWidget {
                   child: Text(
                     totalBag,
                     style:
-                        context.textStyle.textExtraBold.copyWith(fontSize: 13),
+                        context.textStyles.textExtraBold.copyWith(fontSize: 13),
                   ),
                 ),
               ],
