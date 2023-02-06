@@ -18,7 +18,7 @@ abstract class BaseState<T extends StatefulWidget, C extends BlocBase>
     //? Executa depois que a tela for construida
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       //? DENTRO DO HOMECONTROLLER, BUSCA OS PRODUTOS
-      context.read<HomeController>().loadProducts();
+      // context.read<HomeController>().loadProducts();
       //     context.read<HomeController>().loadProducts();
       onReady();
     });

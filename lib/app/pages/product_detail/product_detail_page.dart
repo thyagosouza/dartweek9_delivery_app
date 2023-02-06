@@ -27,6 +27,51 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState
     extends BaseState<ProductDetailPage, ProductDetailController> {
   @override
+  void initState() {
+    super.initState();
+    final amount = widget.order?.amount ?? 1;
+    controller.initial(amount, widget.order != null);
+  }
+
+  void _showConfirmDelete(int amount) {
+    showDialog(
+        //? barrierDismissible - clicar do lado para sair
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Deseja excluir o produto?',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Cancelar',
+                  style: context.textStyle.textBold.copyWith(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pop(
+                      OrderProductDto(amount: amount, product: widget.product));
+                },
+                child: Text(
+                  'Cofnirmar',
+                  style: context.textStyle.textBold,
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DeliveryAppbar(),
@@ -101,36 +146,48 @@ class _ProductDetailPageState
                   //? amount é o estado recebido pelo BLOCBUILDER
                   builder: (context, amount) {
                     return ElevatedButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              'Adicionar',
-                              style: context.textStyle.textExtraBold
-                                  .copyWith(fontSize: 13),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Expanded(
-                            child: AutoSizeText(
-                              (widget.product.price * amount).currencyPTBR,
-                              maxFontSize: 13,
-                              minFontSize: 4,
-                              maxLines: 1,
-                              textAlign: TextAlign.center,
-                              style: context.textStyle.textExtraBold
-                                  .copyWith(fontSize: 13),
-                            ),
-                          )
-                        ],
-                      ),
+                      style: amount == 0
+                          ? ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red)
+                          : null,
                       onPressed: () {
-                        Navigator.of(context).pop(OrderProductDto(
-                            amount: amount, product: widget.product));
+                        if (amount == 0) {
+                          _showConfirmDelete(amount);
+                        } else {
+                          Navigator.of(context).pop(OrderProductDto(
+                              amount: amount, product: widget.product));
+                        }
                       },
+                      child: Visibility(
+                        visible: amount > 0,
+                        replacement: Text('Excluir Produto'),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Adicionar',
+                                style: context.textStyle.textExtraBold
+                                    .copyWith(fontSize: 13),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                              child: AutoSizeText(
+                                (widget.product.price * amount).currencyPTBR,
+                                maxFontSize: 13,
+                                minFontSize: 4,
+                                maxLines: 1,
+                                textAlign: TextAlign.center,
+                                style: context.textStyle.textExtraBold
+                                    .copyWith(fontSize: 13),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),

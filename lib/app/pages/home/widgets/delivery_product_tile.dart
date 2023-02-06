@@ -28,7 +28,7 @@ class DeliveryProductTile extends StatelessWidget {
           'product': product,
           'order': orderProduct,
         });
-        if (orderProduct != null) {
+        if (orderProductResult != null) {
           controller.addOrUpdateBag(orderProductResult as OrderProductDto);
         }
       },

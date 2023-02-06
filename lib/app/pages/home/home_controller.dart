@@ -35,7 +35,21 @@ class HomeController extends Cubit<HomeState> {
     //? ... <- é um destructor, spread operator. Pega todos os itens da lista e retornar sem precisar loop
     //* duplicação da lista para o bloc conseguir ver
     final shoppingBag = [...state.shoppingBag];
-    shoppingBag.add(orderProduct);
+    //* BUSCAR PARA SABER SE JÁ ESTÁ ADICONADO NA BAG
+    final orderIndex = shoppingBag
+        .indexWhere((orderP) => orderP.product == orderProduct.product);
+    if (orderIndex > -1) {
+      if (orderProduct.amount == 0) {
+        shoppingBag.removeAt(orderIndex);
+      } else {
+        shoppingBag[orderIndex] = orderProduct;
+      }
+      //* pega o order index e atualiza
+    } else {
+      //* se não existier dentro da lista, será adicionado
+      shoppingBag.add(orderProduct);
+    }
+
     emit(state.copyWith(shoppingBag: shoppingBag));
   }
 }
