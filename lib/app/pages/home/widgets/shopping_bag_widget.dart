@@ -22,6 +22,7 @@ class ShoppingBagWidget extends StatelessWidget {
     if (!sp.containsKey('accessToken')) {
       //? Se não tem o accessToken, enviar para login
       final loginResult = await navigator.pushNamed('/auth/login');
+      print(loginResult);
     }
     //? Enviar para o order
   }
@@ -60,7 +61,7 @@ class ShoppingBagWidget extends StatelessWidget {
             },
             child: Stack(
               children: [
-                Align(
+                const Align(
                     alignment: Alignment.centerLeft,
                     child: Icon(Icons.shopping_cart_outlined)),
                 Align(
