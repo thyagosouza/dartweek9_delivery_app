@@ -6,6 +6,7 @@ class ProductModel {
   final String description;
   final double price;
   final String image;
+
   ProductModel({
     required this.id,
     required this.name,
@@ -13,6 +14,7 @@ class ProductModel {
     required this.price,
     required this.image,
   });
+  
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,6 +38,5 @@ class ProductModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductModel.fromJson(String source) => ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
