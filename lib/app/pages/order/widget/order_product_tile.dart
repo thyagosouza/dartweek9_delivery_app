@@ -1,4 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:dw9_delivery_app/app/core/ui/styles/colors_app.dart';
+import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
+import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_increment_decrement_button.dart';
 import 'package:dw9_delivery_app/app/dto/order_product_dto.dart';
 import 'package:flutter/material.dart';
 
@@ -14,16 +17,50 @@ class OrderProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.network(
-          'https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-1682-52acab79d88efd805e6a341697e6aecb.jpg',
-          width: 100,
-          height: 100,
-          fit: BoxFit.cover,
-        ),
-        const Text('index'),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Image.network(
+            'https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-1682-52acab79d88efd805e6a341697e6aecb.jpg',
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'X-Burger',
+                    style:
+                        context.textStyles.textRegular.copyWith(fontSize: 16),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '19,90',
+                        style: context.textStyles.textMedium.copyWith(
+                          fontSize: 14,
+                          color: context.colors.secondary,
+                        ),
+                      ),
+                      DeliveryIncrementDecrementButton(
+                        amout: 1,
+                        decrementOnTap: () {},
+                        incrementOnTap: () {},
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
